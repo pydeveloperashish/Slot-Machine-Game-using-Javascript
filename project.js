@@ -13,6 +13,7 @@ const prompt = require('prompt-sync')();
 //     return 1
 // }
 
+// 1. Deposit some money.
 // new way to create a function
 const deposit = () => {
     while (true) {
