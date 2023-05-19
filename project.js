@@ -7,6 +7,7 @@
 // 7. Play Again
 
 
+
 const prompt = require('prompt-sync')();
 
 // old way to create a function
