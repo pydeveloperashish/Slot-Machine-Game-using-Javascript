@@ -7,6 +7,7 @@
 // 7. Play Again
 
 
+
 const prompt = require('prompt-sync')();
 
 // old way to create a function
@@ -44,11 +45,32 @@ const getNumberOfLines = () => {
             return numberOfLines;
             }
     }
-}
+};
+
+// 3. Collect a bet amount.
+const getBet = (balance, lines) => {
+    while (true) {
+        const bet = prompt("Enter the bet per line: ");
+        const numberBet = parseFloat(bet);
+    
+        if (isNaN(numberBet) || numberBet <= 0 || balance < numberBet * lines) {
+            console.log("Invalid bet, try again.");
+            }
+        else {
+            return numberBet;
+            }
+    }
+};
 
 
-const numberDepositeAmount = deposit();
+let balance = deposit();
 const numberOfLines = getNumberOfLines();
+const numberBet = getBet(balance, numberOfLines);
 
-console.log("Deposite amount: " + numberDepositeAmount);
+console.log("Deposite amount: " + balance);
 console.log("Number of lines: " + numberOfLines);
+console.log("Bet: " + numberBet);
+
+
+
+
