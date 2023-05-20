@@ -91,31 +91,34 @@ const spin = () => {
         }
     }
 
-    const reels = [[], [], []];
+    const reels = [];
     for (let i = 0; i < COLS; i++) {
+        reels.push([]);
         const reelSymbols = [...symbols];
         for (let j = 0; j < ROWS; j++) {
             const randomIndex = Math.floor(Math.random() * reelSymbols.length)
             const selectedSymbol = reelSymbols[randomIndex];
             reels[i].push(selectedSymbol);
-            reelSymbols.slice(randomIndex, 1);
+            reelSymbols.splice(randomIndex, 1);
 
         }
     }
     return  reels;
 };
 
-const reels = spin();
-console.log(reels);
+
 
 
 let balance = deposit();
 const numberOfLines = getNumberOfLines();
 const numberBet = getBet(balance, numberOfLines);
+const reels = spin();
 
 console.log("Deposite amount: " + balance);
 console.log("Number of lines: " + numberOfLines);
 console.log("Bet: " + numberBet);
+console.log(reels);
+
 
 
 
