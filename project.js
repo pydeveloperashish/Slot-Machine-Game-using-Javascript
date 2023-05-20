@@ -153,7 +153,7 @@ const getWinnings = (rows, bet, lines) => {
 };
 
 
-// 6. Give the user their winnings and Play Again Feature
+// 6. Give the user their winnings and add Play Again Feature.
 const game = () => {
     let balance = deposit();
     console.log("Deposite amount: " + balance);
