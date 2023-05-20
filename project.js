@@ -153,23 +153,35 @@ const getWinnings = (rows, bet, lines) => {
 };
 
 
+// 6. Give the user their winnings and Play Again Feature
+const game = () => {
+    let balance = deposit();
+    console.log("Deposite amount: " + balance);
+    while (true){
+    console.log("you have a balance of $" + balance);
+    const numberOfLines = getNumberOfLines();
+    console.log("Number of lines: " + numberOfLines);
+    const numberBet = getBet(balance, numberOfLines);
+    console.log("Bet: " + numberBet);
+    balance -= numberBet * numberOfLines;
+    const reels = spin();
+    const rows = transpose(reels);
+    printRows(rows);
+    const winnings = getWinnings(rows, numberBet, numberOfLines);
+    balance += winnings;
+    console.log("You won, $" + winnings.toString());
+    
+    if (balance <= 0) {
+        console.log("You ran out of Money!");
+        break;
+    }   
+    const playAgain = prompt("Do you want to play again (y/n)? ")
+    if (playAgain != "y")break;
+    }
+};
 
-let balance = deposit();
-const numberOfLines = getNumberOfLines();
-const numberBet = getBet(balance, numberOfLines);
-const reels = spin();
-const rows = transpose(reels);
-const winnings = getWinnings(rows, numberBet, numberOfLines)
 
-
-
-console.log("Deposite amount: " + balance);
-console.log("Number of lines: " + numberOfLines);
-console.log("Bet: " + numberBet);
-console.log(reels);
-console.log(rows);
-printRows(rows)
-console.log("You won, $" + winnings.toString())
+game();
 
 
 
